@@ -1,0 +1,8 @@
+services:
+  default:
+    # Name the image.
+    image: vlc-android
+    build: .
+    # Mount the container to the entire repository.
+    volumes:
+      - .:/vlc-android:rw
