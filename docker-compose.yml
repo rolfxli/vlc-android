@@ -3,6 +3,9 @@ services:
     # Name the image.
     image: vlc-android
     build: .
-    # Mount the container to the entire repository.
+    # Mount the entire repository so all code and changes are visible for building
+    # and to allow the output files.
     volumes:
-      - .:/vlc-android:rw
+      - type: bind
+        source: .
+        target: /vlc-android
