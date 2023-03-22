@@ -2,10 +2,16 @@ services:
   default:
     # Name the image.
     image: vlc-android
+    # Name the container.
+    container_name: vlc-android
+    # Build the image using the provided Dockerfile.
     build: .
-    # Mount the entire repository so all code and changes are visible for building
-    # and to allow the output files.
+    # Bind mount the entire repository so all code (including changes) are visible for building
+    # and to allow the output APK to be retrieved directly through the host.
     volumes:
       - type: bind
         source: .
         target: /vlc-android
+    # Allocate a pseudo-TTY connected to the container's stdin.
+    tty: true
+    stdin_open: true
